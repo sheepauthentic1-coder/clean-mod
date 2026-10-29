@@ -1,0 +1,14 @@
+name: Build iOS dylib
+on: [push]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: sh build_ios.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cleanmod-dylib
+          path: cleanmod.dylib
